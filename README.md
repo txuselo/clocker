@@ -1,9 +1,28 @@
 # Clocker
 
+[![Build Status](https://travis-ci.org/txuselo/clocker.svg?branch=master)](https://travis-ci.org/github/txuselo/clocker)
+[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
+
+## Requirements
+
+For building and running the application you need:
+
+- [JDK 1.11](https://jdk.java.net/11/)
+- [Maven 3](https://maven.apache.org)
+
 
 ## Install
-* Run
+There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.redworks.clocker.ClockerApplication` class from your IDE.
+
+Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html) like so:
+
+```shell
+mvn spring-boot:run
 ```
+
+Last option is running in traditional mode in your JVM. For this you must build and run with this commands:
+
+```shell
 mvn install
 java -jar target/*.jar
 ```
@@ -89,3 +108,8 @@ For further reference, please consider the following sections:
 * [Spring Web](https://docs.spring.io/spring-boot/docs/2.4.0/reference/htmlsingle/#boot-features-developing-web-applications)
 * [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.4.0/reference/htmlsingle/#boot-features-jpa-and-spring-data)
 * [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/2.4.0/reference/htmlsingle/#production-ready)
+
+
+## Copyright
+
+Released under the Apache License 2.0. See the [LICENSE](https://github.com/txuselo/clocker/blob/master/LICENSE) file.
