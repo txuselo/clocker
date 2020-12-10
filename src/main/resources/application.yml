@@ -1,0 +1,57 @@
+# server:
+#   port: 8080
+#   tomcat:
+#     basedir: tomcat  
+#     accesslog:
+#       enabled: true
+#       pattern:  "${project.name} %h %{user}o %{roles}o %t \"%r\" %s %b %D"
+#       prefix: access_log_${project.name}
+#       directory: logs
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: 'jdbc:h2:mem:clocker'
+    username: sa
+    password:  
+    # driver-class-name: 'com.mysql.jdbc.Driver'
+    driver-class-name: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect 
+    # properties:
+    #   hibernate:
+    #     dialect: ''
+    # hibernate:
+    #   naming: 
+    #     physical-strategy: 'org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl'
+management:
+  endpoint:
+    health:
+      enabled: true
+    mappings:
+      enabled: true
+    loggers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+        - mappings
+        - health
+        - loggers
+      cors:
+        allowed-origins:
+        - '*'
+        allowed-methods:
+        - '*'
+        allowed-headers:
+        - '*'
+security:
+  endpoints:
+  - '/employee/**'
+  - '/record/**'
+  - '/user/**'
+  - '/role/**'
+  - '/rel-user-role/**'
+  
