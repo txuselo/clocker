@@ -23,7 +23,7 @@ import com.redworks.clocker.persistence.entities.RelUserRole;
 
 
 @RestController
-@RequestMapping("/rel-user-role")
+@RequestMapping("/rel-users-roles")
 public class RelUserRoleController {
 
 	@Autowired
@@ -56,30 +56,10 @@ public class RelUserRoleController {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
-	@GetMapping("/list")
+	@GetMapping
 	@PreAuthorize("hasAnyAuthority('ROLE_admin','ROLE_user')")
 	public ResponseEntity<List<RelUserRole>> listAllRelUserRole() {
 		return new ResponseEntity<List<RelUserRole>> (relUserRoleService.findAllRelUserRole(), HttpStatus.OK);
 	}
 	
-	@PostMapping("/list")
-	@PreAuthorize("hasAnyAuthority('ROLE_admin','ROLE_user')")
-	public ResponseEntity<List<RelUserRole>> createListRelUserRole(@RequestBody List<RelUserRole> listRelUserRole) {
-		return new ResponseEntity<List<RelUserRole>>(relUserRoleService.saveListRelUserRole(listRelUserRole), HttpStatus.CREATED);
-	}
-	
-	@CrossOrigin(methods=RequestMethod.PUT)
-	@PreAuthorize("hasAnyAuthority('ROLE_admin','ROLE_user')")
-	@PutMapping("/list")
-	public ResponseEntity<List<RelUserRole>> updateListRelUserRole(@RequestBody List<RelUserRole> listRelUserRole){
-		return new ResponseEntity<List<RelUserRole>>(relUserRoleService.updateListRelUserRole(listRelUserRole), HttpStatus.OK);
-	}
-	
-	@CrossOrigin(methods=RequestMethod.DELETE)
-	@PreAuthorize("hasAnyAuthority('ROLE_admin','ROLE_user')")
-	@DeleteMapping("/list")
-	public ResponseEntity<Void> deleteListRelUserRole(@RequestBody List<RelUserRole> listRelUserRole){
-		relUserRoleService.deleteListRelUserRole(listRelUserRole);
-		return new ResponseEntity<Void>(HttpStatus.OK);
-	}
 }

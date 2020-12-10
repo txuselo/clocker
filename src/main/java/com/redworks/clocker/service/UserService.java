@@ -2,6 +2,7 @@ package com.redworks.clocker.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,7 +32,12 @@ public class UserService implements UserDetailsService{
     private RoleRepository roleRepository;
 
     public User findById(Long id){
-        return userRepository.findById(id).get();
+		Optional<User> user = userRepository.findById(id);
+		return user.isPresent() ?  user.get() : null;
+	}
+	
+	public User findByUsername(String username){
+        return userRepository.findByUsername(username);
     }
 	
 	public User saveUser(User user){

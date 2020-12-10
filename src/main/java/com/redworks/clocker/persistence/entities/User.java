@@ -7,9 +7,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.Data;
+
 
 @Entity
 @Table(name="USER")
+@Data
 public class User implements Serializable {
     
 	private static final long serialVersionUID = 1L;
@@ -19,11 +22,17 @@ public class User implements Serializable {
 	@Column(name="ID")
 	private Long id;
 	
-	@Column(name="USERNAME")
+	@Column(name="USERNAME", unique = true)
 	private String username;
 	
 	@Column(name="PASSWORD")
 	private String password;
+
+	@Column(name="NAME")
+	private String name;
+
+	@Column(name="SURNAME")
+	private String surname;
 	
 	@Column(name="CREATED_AT", insertable=false, updatable=false)
 	private LocalDateTime createdAt;
@@ -34,52 +43,5 @@ public class User implements Serializable {
 	@OneToMany(mappedBy="user")
 	@JsonIgnoreProperties("user")
 	private List<RelUserRole> relUserRole;
-	
-	public Long getId(){
-		return this.id;
-	}
 
-	public void setId(Long id){
-		this.id = id;
-	}
-	
-	public String getUsername(){
-		return this.username;
-	}
-
-	public void setUsername(String username){
-		this.username = username;
-	}
-	
-	public String getPassword(){
-		return this.password;
-	}
-
-	public void setPassword(String password){
-		this.password = password;
-	}
-	
-	public LocalDateTime getCreatedAt(){
-		return this.createdAt;
-	}
-
-	public void setCreatedAt(LocalDateTime createdAt){
-		this.createdAt = createdAt;
-	}
-	
-	public LocalDateTime getUpdatedAt(){
-		return this.updatedAt;
-	}
-
-	public void setUpdatedAt(LocalDateTime updatedAt){
-		this.updatedAt = updatedAt;
-	}
-	
-	public List<RelUserRole> getRelUserRole(){
-		return this.relUserRole;
-	}
-
-	public void setRelUserRole(List<RelUserRole> relUserRole){
-		this.relUserRole = relUserRole;
-	}
 }

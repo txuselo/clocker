@@ -23,7 +23,7 @@ import com.redworks.clocker.persistence.entities.Record;
 
 
 @RestController
-@RequestMapping("/record")
+@RequestMapping("/records")
 public class RecordController {
 
 	@Autowired
@@ -56,30 +56,10 @@ public class RecordController {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
-	@GetMapping("/list")
+	@GetMapping
 	@PreAuthorize("hasAnyAuthority('ROLE_admin','ROLE_user')")
 	public ResponseEntity<List<Record>> listAllRecord() {
 		return new ResponseEntity<List<Record>> (recordService.findAllRecord(), HttpStatus.OK);
 	}
 	
-	@PostMapping("/list")
-	@PreAuthorize("hasAnyAuthority('ROLE_admin','ROLE_user')")
-	public ResponseEntity<List<Record>> createListRecord(@RequestBody List<Record> listRecord) {
-		return new ResponseEntity<List<Record>>(recordService.saveListRecord(listRecord), HttpStatus.CREATED);
-	}
-	
-	@CrossOrigin(methods=RequestMethod.PUT)
-	@PreAuthorize("hasAnyAuthority('ROLE_admin','ROLE_user')")
-	@PutMapping("/list")
-	public ResponseEntity<List<Record>> updateListRecord(@RequestBody List<Record> listRecord){
-		return new ResponseEntity<List<Record>>(recordService.updateListRecord(listRecord), HttpStatus.OK);
-	}
-	
-	@CrossOrigin(methods=RequestMethod.DELETE)
-	@PreAuthorize("hasAnyAuthority('ROLE_admin','ROLE_user')")
-	@DeleteMapping("/list")
-	public ResponseEntity<Void> deleteListRecord(@RequestBody List<Record> listRecord){
-		recordService.deleteListRecord(listRecord);
-		return new ResponseEntity<Void>(HttpStatus.OK);
-	}
 }

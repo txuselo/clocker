@@ -1,4 +1,4 @@
-package com.redworks.clocker;
+package com.redworks.clocker.config;
 
 import java.util.Arrays;
 import java.util.Collections;

@@ -7,9 +7,12 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.Data;
+
 
 @Entity
 @Table(name="REL_USER_ROLE")
+@Data
 public class RelUserRole implements Serializable {
     
 	private static final long serialVersionUID = 1L;
@@ -34,47 +37,5 @@ public class RelUserRole implements Serializable {
 	
 	@Column(name="UPDATED_AT", insertable=false, updatable=false)
 	private LocalDateTime updatedAt;
-	
-	
-	public Long getId(){
-		return this.id;
-	}
-
-	public void setId(Long id){
-		this.id = id;
-	}
-	
-	public User getUser(){
-		return this.user;
-	}
-
-	public void setUser(User user){
-		this.user = user;
-	}
-	
-	public Role getRole(){
-		return this.role;
-	}
-
-	public void setRole(Role role){
-		this.role = role;
-	}
-	
-	public LocalDateTime getCreatedAt(){
-		return this.createdAt;
-	}
-
-	public void setCreatedAt(LocalDateTime createdAt){
-		this.createdAt = createdAt;
-	}
-	
-	public LocalDateTime getUpdatedAt(){
-		return this.updatedAt;
-	}
-
-	public void setUpdatedAt(LocalDateTime updatedAt){
-		this.updatedAt = updatedAt;
-	}
-	
 	
 }
