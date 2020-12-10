@@ -1,6 +1,6 @@
 # Clocker
 
-[![Build Status](https://travis-ci.org/txuselo/clocker.svg?branch=master)](https://travis-ci.org/github/txuselo/clocker)
+[![Build Status](https://travis-ci.org/txuselo/clocker.svg?branch=develop)](https://travis-ci.org/github/txuselo/clocker)
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 ## Requirements
