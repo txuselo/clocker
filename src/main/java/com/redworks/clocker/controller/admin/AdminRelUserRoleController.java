@@ -1,4 +1,4 @@
-package com.redworks.clocker.controller;
+package com.redworks.clocker.controller.admin;
 
 import java.util.List;
 
@@ -23,8 +23,8 @@ import com.redworks.clocker.persistence.entities.RelUserRole;
 
 
 @RestController
-@RequestMapping("/rel-users-roles")
-public class RelUserRoleController {
+@RequestMapping("/admin/rel-users-roles")
+public class AdminRelUserRoleController {
 
 	@Autowired
 	RelUserRoleService relUserRoleService;

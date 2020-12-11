@@ -1,4 +1,4 @@
-package com.redworks.clocker.controller;
+package com.redworks.clocker.controller.admin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +25,8 @@ import com.redworks.clocker.persistence.entities.User;
 
 
 @RestController
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/admin/users")
+public class AdminUserController {
 
 	@Autowired
 	UserService userService;
