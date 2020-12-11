@@ -2,9 +2,10 @@ package com.redworks.clocker.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 
 import com.redworks.clocker.persistence.dao.RecordRepository;
@@ -17,9 +18,14 @@ public class RecordService{
     @Autowired
 	private RecordRepository recordRepository;
 	
-
+	@Nullable
     public Record findById(Long id){
-        return recordRepository.findById(id).get();
+		if (recordRepository.findById(id).isPresent()){
+			return recordRepository.findById(id).get();
+		}else{
+			return null;
+		}
+        
     }
 	
 	public Record saveRecord(Record record){
@@ -67,4 +73,10 @@ public class RecordService{
 		
 	}
 	
+	public List<Record> filterByUsername(String username){
+		return recordRepository.findAll().stream()
+			.filter(record -> record.getUser().getUsername().equals(username))
+			.collect(Collectors.toList());
+	}
+
 }
