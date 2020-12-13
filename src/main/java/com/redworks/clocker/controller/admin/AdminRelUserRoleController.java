@@ -1,4 +1,4 @@
-package com.redworks.clocker.controller;
+package com.redworks.clocker.controller.admin;
 
 import java.util.List;
 
@@ -23,33 +23,33 @@ import com.redworks.clocker.persistence.entities.RelUserRole;
 
 
 @RestController
-@RequestMapping("/rel-users-roles")
-public class RelUserRoleController {
+@RequestMapping("/admin/rel-users-roles")
+public class AdminRelUserRoleController {
 
 	@Autowired
 	RelUserRoleService relUserRoleService;
 
 	@GetMapping("/{id}")
-	@PreAuthorize("hasAnyAuthority('ROLE_admin','ROLE_user')")
+	@PreAuthorize("hasAnyAuthority('ROLE_admin')")
 	public ResponseEntity<RelUserRole> getRelUserRoleService(@PathVariable("id") Long id) {
 		return new ResponseEntity<RelUserRole> ( relUserRoleService.findById(id), HttpStatus.OK);
 	}
 	
 	@PostMapping
-	@PreAuthorize("hasAnyAuthority('ROLE_admin','ROLE_user')")
+	@PreAuthorize("hasAnyAuthority('ROLE_admin')")
 	public ResponseEntity<RelUserRole> createRelUserRole(@RequestBody RelUserRole relUserRole) {
 		return new ResponseEntity<RelUserRole>(relUserRoleService.saveRelUserRole(relUserRole), HttpStatus.CREATED);
 	}
 	
 	@CrossOrigin(methods=RequestMethod.PUT)
-	@PreAuthorize("hasAnyAuthority('ROLE_admin','ROLE_user')")
+	@PreAuthorize("hasAnyAuthority('ROLE_admin')")
 	@PutMapping("/{id}")
 	public ResponseEntity<RelUserRole> updateRelUserRole(@PathVariable("id") Long id, @RequestBody RelUserRole relUserRole){
 		return new ResponseEntity<RelUserRole>(relUserRoleService.updateRelUserRole(id, relUserRole), HttpStatus.OK);
 	}
 	
 	@CrossOrigin(methods=RequestMethod.DELETE)
-	@PreAuthorize("hasAnyAuthority('ROLE_admin','ROLE_user')")
+	@PreAuthorize("hasAnyAuthority('ROLE_admin')")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteRelUserRole(@PathVariable("id") Long id){
 		relUserRoleService.deleteRelUserRole(id);
@@ -57,7 +57,7 @@ public class RelUserRoleController {
 	}
 
 	@GetMapping
-	@PreAuthorize("hasAnyAuthority('ROLE_admin','ROLE_user')")
+	@PreAuthorize("hasAnyAuthority('ROLE_admin')")
 	public ResponseEntity<List<RelUserRole>> listAllRelUserRole() {
 		return new ResponseEntity<List<RelUserRole>> (relUserRoleService.findAllRelUserRole(), HttpStatus.OK);
 	}
