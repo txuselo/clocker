@@ -79,4 +79,14 @@ public class RecordService{
 			.collect(Collectors.toList());
 	}
 
+	public Record partialUpdate(Record origin, Record changes){
+		if (changes.getStartDate() != null){
+			origin.setStartDate(changes.getStartDate());
+		}
+		if (changes.getEndDate() != null){
+			origin.setEndDate(changes.getEndDate());
+		}
+		return origin;
+	}
+
 }

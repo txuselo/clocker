@@ -69,7 +69,8 @@ public class RecordController {
 		if (pathRecord == null || ! hasAuthority(pathRecord, authentication)){
 			return new ResponseEntity<Record> (HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<Record>(recordService.updateRecord(id, pathRecord), HttpStatus.OK);
+		Record updated = recordService.partialUpdate(pathRecord, record);
+		return new ResponseEntity<Record>(recordService.updateRecord(id, updated), HttpStatus.OK);
 	}
 
 	@CrossOrigin(methods=RequestMethod.PUT)
